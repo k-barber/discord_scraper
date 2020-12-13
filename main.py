@@ -56,7 +56,8 @@ with open('images.txt', mode="wt", encoding="utf-8") as myfile:
 #
 
 for link in links:
-    filename = link[link.rindex("/") + 1:]
+    filename = link[link.rindex("/") + 1:link.rindex(".")]
+    fileextension = link[link.rindex("."):]
     driver.get(link)
 
     for request in driver.requests:
@@ -65,7 +66,16 @@ for link in links:
                 print(request.url)
                 print(request.response.status_code)
                 print(request.response.headers['Content-Type'])
-                output = open(os.getcwd() + "/scraped/" + filename, "wb")
+                path = os.getcwd()+ "/scraped/" + filename + fileextension
+
+                #If the file already exists, change the name
+                if (os.path.isfile(path)):
+                    repeat = 1
+                    while (os.path.isfile(path)):
+                        path = os.getcwd()+ "/scraped/" + filename + " (" + str(repeat) + ")" + fileextension
+                        repeat = repeat + 1
+                
+                output = open(path, "wb")
                 output.write(request.response.body)
                 output.close()
             else:
