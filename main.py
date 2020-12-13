@@ -42,7 +42,7 @@ while (scroll_position > 0) :
         elif (isinstance(href, str)):
             links.append(href)
     driver.execute_script("arguments[0].scrollTop = 0", scroll)
-    time.sleep(1)
+    time.sleep(3)
     scroll_position = driver.execute_script("return arguments[0].scrollTop", scroll)
 
 # write in case of failure
