@@ -4,3 +4,6 @@ scraped
 cookies.pkl
 geckodriver.log
 images.txt
+build
+Scripts
+dist

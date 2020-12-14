@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import re
 import os
 import time
-
+import pathlib
+import sys
 
 var = None
 while (var == None):
@@ -13,6 +14,8 @@ while (var == None):
     else: 
         print("Channel URL must be in form 'discord.com/channels/12345678910/12345678910'")
         var = None
+
+sys.path.append(os.getcwd())
 
 driver = webdriver.Firefox()
 driver.get(channel_url)
@@ -66,6 +69,7 @@ for link in links:
                 print(request.url)
                 print(request.response.status_code)
                 print(request.response.headers['Content-Type'])
+                pathlib.Path(os.getcwd()+ "/scraped/").mkdir(parents=True, exist_ok=True)
                 path = os.getcwd()+ "/scraped/" + filename + fileextension
 
                 #If the file already exists, change the name
