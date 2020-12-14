@@ -20,8 +20,8 @@ sys.path.append(os.getcwd())
 driver = webdriver.Firefox()
 driver.get(channel_url)
 
-var = None
-while (var != "Y"):
+var = ""
+while (var.lower() != "y"):
     var = input("Done logging in? (Y/N)")
 
 soup = BeautifulSoup(driver.page_source, 'html.parser')
