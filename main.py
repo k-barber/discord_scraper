@@ -76,7 +76,7 @@ for link in links:
                 if (os.path.isfile(path)):
                     repeat = 1
                     while (os.path.isfile(path)):
-                        path = os.getcwd()+ "/scraped/" + filename + " (" + str(repeat) + ")" + fileextension
+                        path = os.getcwd()+ "/scraped/" + filename + "_" + str(repeat) + fileextension
                         repeat = repeat + 1
                 
                 output = open(path, "wb")
